@@ -2933,7 +2933,7 @@ function generate_tripcode($name) {
 		else
 			$trip = substr(crypt($trip, $salt), -10);
 	}
-	$trip = makeKoremutakeString($trip);
+	$trip = phoneticEncoding($trip);
 
 	if($secure){
 		$trip = '!!' . $trip;
@@ -2943,67 +2943,66 @@ function generate_tripcode($name) {
 	return array($name, $trip);
 }
 
-//method from http://shorl.com/koremutake.php
-function makeKoremutakeString($str){
-	$koremutake_arr =  [
-		'ba', 'be', 'bi', 'bo', 'bu', 'by',
-		'ca', 'ce', 'ci', 'co', 'cu', 'cy',
-		'da', 'de', 'di', 'do', 'du', 'dy',
-		'fa', 'fe', 'fi', 'fo', 'fu', 'fy',
-		'ga', 'ge', 'gi', 'go', 'gu', 'gy',
-		'ha', 'he', 'hi', 'ho', 'hu', 'hy',
-		'ja', 'je', 'ji', 'jo', 'ju', 'jy',
-		'ka', 'ke', 'ki', 'ko', 'ku', 'ky',
-		'la', 'le', 'li', 'lo', 'lu', 'ly',
-		'ma', 'me', 'mi', 'mo', 'mu', 'my',
-		'na', 'ne', 'ni', 'no', 'nu', 'ny',
-		'pa', 'pe', 'pi', 'po', 'pu', 'py',
-		'ra', 're', 'ri', 'ro', 'ru', 'ry',
-		'sa', 'se', 'si', 'so', 'su', 'sy',
-		'ta', 'te', 'ti', 'to', 'tu', 'ty',
-		'va', 've', 'vi', 'vo', 'vu', 'vy',
-		'wa', 'we', 'wi', 'wo', 'wu', 'wy',
-		'xa', 'xe', 'xi', 'xo', 'xu', 'xy',
-		'za', 'ze', 'zi', 'zo', 'zu', 'zy',
-		'cha', 'che', 'sha', 'the', 'sta', 'ste', 'tri', 'lee', 'bra', 'lia', 'gla',
-		'lea', 'dia', 'gai', 'mia', 'ree', 'phi', 'die', 'lei', 'sie', 'lai', 'dwi',
-		'sca', 'pri', 'tha', 'rey', 'roy', 'kay', 'que', 'cia', 'cie', 'bri', 'rya',
-		'sco', 'lio', 'sto', 'nia', 'tie', 'she', 'dua', 'ria', 'tho', 'tia', 'nya',
-		'spe', 'ley', 'vio', 'qua', 'loi', 'qui', 'bia', 'sey', 'chi', 'lay', 'nee',
-		'dra', 'via', 'teo', 'fre', 'kie', 'kia', 'saa', 'sea', 'sia', 'cly', 'rai',
-		'sue', 'mee', 'mya', 'nie', 'shi', 'wre', 'sho', 'rio', 'dee', 'vie', 'dwa',
-		'cla', 'tra', 'ble', 'kai', 'lie', 'lya', 'ney', 'sla', 'blo', 'nai', 'way',
-		'smi', 'kae', 'kee', 'phe', 'rae', 'jua', 'nea', 'mai', 'zia', 'rye', 'kei',
-		'lle', 'nei', 'mie', 'cho', 'tya', 'nay', 'nye', 'rea', 'pha', 'deo', 'cle',
-		'tzi', 'lou', 'dre', 'khi', 'llu', 'fae', 'mou', 'cre', 'loy', 'sai', 'mae',
-		'rie', 'tre', 'cae', 'nyo', 'leo', 'ceo', 'ray', 'maa', 'shu', 'veo', 'naa',
-		'lau', 'gra', 'sti', 'xia', 'dio', 'gro', 'thi', 'gio', 'see', 'vau'
-	];
-	$enders = ['', 'b', 'c', 'd', 'f', 'g', 'h', 'k', 'l', 'm', 'n', 'r', 's', 't', 'x', 'z'];
-	$str = str_replace(".", "+", $str);
-	$str_dec = unpack('C*', base64_decode($str));
-	$kore_str = "";
-	$next_ender = "";
-	foreach ($str_dec as $key => $char_dec) {
-		if ($key % 7 == 4 && $key < count($str_dec)) {
-			// Every 4 out of 7 bytes, if not last byte, split byte into two parts:
-			// 1. consonant appended to end of current word
-			$kore_str .= $enders[intdiv($char_dec , count($enders))] . " ";
-			// 2. consonant to be appended to next word
-			$next_ender = $enders[$char_dec % count($enders)];
-		} else if ($key % 7 == 0 && $key < count($str_dec)) {
-			// Every 7 out of 7 bytes, if not last byte, consume $next_ender and start new word
-			$kore_str .= $koremutake_arr[$char_dec] . $next_ender . " ";
-			$next_ender = "";
-		} else {
-			// Normal syllable lookup
-			$kore_str .= $koremutake_arr[$char_dec];
+function phoneticEncoding($str){
+	$phonetic_arr =  [
+			'ba', 'be', 'bi', 'bo', 'bu', 'by',
+			'ca', 'ce', 'ci', 'co', 'cu', 'cy',
+			'da', 'de', 'di', 'do', 'du', 'dy',
+			'fa', 'fe', 'fi', 'fo', 'fu', 'fy',
+			'ga', 'ge', 'gi', 'go', 'gu', 'gy',
+			'ha', 'he', 'hi', 'ho', 'hu', 'hy',
+			'ja', 'je', 'ji', 'jo', 'ju', 'jy',
+			'ka', 'ke', 'ki', 'ko', 'ku', 'ky',
+			'la', 'le', 'li', 'lo', 'lu', 'ly',
+			'ma', 'me', 'mi', 'mo', 'mu', 'my',
+			'na', 'ne', 'ni', 'no', 'nu', 'ny',
+			'pa', 'pe', 'pi', 'po', 'pu', 'py',
+			'ra', 're', 'ri', 'ro', 'ru', 'ry',
+			'sa', 'se', 'si', 'so', 'su', 'sy',
+			'ta', 'te', 'ti', 'to', 'tu', 'ty',
+			'va', 've', 'vi', 'vo', 'vu', 'vy',
+			'wa', 'we', 'wi', 'wo', 'wu', 'wy',
+			'xa', 'xe', 'xi', 'xo', 'xu', 'xy',
+			'za', 'ze', 'zi', 'zo', 'zu', 'zy',
+			'cha', 'che', 'sha', 'the', 'sta', 'ste', 'tri', 'lee', 'bra', 'lia', 'gla',
+			'lea', 'dia', 'gai', 'mia', 'ree', 'phi', 'die', 'lei', 'sie', 'lai', 'dwi',
+			'sca', 'pri', 'tha', 'rey', 'roy', 'kay', 'que', 'cia', 'cie', 'bri', 'rya',
+			'sco', 'lio', 'sto', 'nia', 'tie', 'she', 'dua', 'ria', 'tho', 'tia', 'nya',
+			'spe', 'ley', 'vio', 'qua', 'loi', 'qui', 'bia', 'sey', 'chi', 'lay', 'nee',
+			'dra', 'via', 'teo', 'fre', 'kie', 'kia', 'saa', 'sea', 'sia', 'cly', 'rai',
+			'sue', 'mee', 'mya', 'nie', 'shi', 'wre', 'sho', 'rio', 'dee', 'vie', 'dwa',
+			'cla', 'tra', 'ble', 'kai', 'lie', 'lya', 'ney', 'sla', 'blo', 'nai', 'way',
+			'smi', 'kae', 'kee', 'phe', 'rae', 'jua', 'nea', 'mai', 'zia', 'rye', 'kei',
+			'lle', 'nei', 'mie', 'cho', 'tya', 'nay', 'nye', 'rea', 'pha', 'deo', 'cle',
+			'tzi', 'lou', 'dre', 'khi', 'llu', 'fae', 'mou', 'cre', 'loy', 'sai', 'mae',
+			'rie', 'tre', 'cae', 'nyo', 'leo', 'ceo', 'ray', 'maa', 'shu', 'veo', 'naa',
+			'lau', 'gra', 'sti', 'xia', 'dio', 'gro', 'thi', 'gio', 'see', 'vau'
+		];
+		$enders = ['', 'b', 'c', 'd', 'f', 'g', 'h', 'k', 'l', 'm', 'n', 'r', 's', 't', 'x', 'z'];
+		$str = str_replace(".", "+", $str);
+		$str_dec = unpack('C*', base64_decode($str));
+		$phone_str = "";
+		$next_ender = "";
+		foreach ($str_dec as $key => $char_dec) {
+			if ($key % 7 == 4 && $key < count($str_dec)) {
+				// Every 4 out of 7 bytes, if not last byte, split byte into two parts:
+				// 1. consonant appended to end of current word
+				$phone_str .= $enders[intdiv($char_dec , count($enders))] . " ";
+				// 2. consonant to be appended to next word
+				$next_ender = $enders[$char_dec % count($enders)];
+			} else if ($key % 7 == 0 && $key < count($str_dec)) {
+				// Every 7 out of 7 bytes, if not last byte, consume $next_ender and start new word
+				$phone_str .= $phonetic_arr[$char_dec] . $next_ender . " ";
+				$next_ender = "";
+			} else {
+				// Normal syllable lookup
+				$phone_str .= $phonetic_arr[$char_dec];
+			}
 		}
+		// Append $next_ender to end of last word if not already consumed
+		$phone_str .= $next_ender;
+		return str_replace(" ", "-", ucwords($phone_str));
 	}
-	// Append $next_ender to end of last word if not already consumed
-	$kore_str .= $next_ender;
-	return str_replace(" ", "-", ucwords($kore_str));
-}
 
 // Highest common factor
 function hcf($a, $b){
