@@ -2983,15 +2983,25 @@ function makeKoremutakeString($str){
 	$str = str_replace(".", "+", $str);
 	$str_dec = unpack('C*', base64_decode($str));
 	$kore_str = "";
-	foreach($str_dec as $key => $char_dec){
-		if($key % 4 == 0){
-			$kore_str .= $enders[$char_dec % (count($enders))] .  " ";
-		} else if($key == count($str_dec)){
-			$kore_str .= $enders[$char_dec % (count($enders))];
-		} else{
+	$next_ender = "";
+	foreach ($str_dec as $key => $char_dec) {
+		if ($key % 7 == 4 && $key < count($str_dec)) {
+			// Every 4 out of 7 bytes, if not last byte, split byte into two parts:
+			// 1. consonant appended to end of current word
+			$kore_str .= $enders[intdiv($char_dec , count($enders))] . " ";
+			// 2. consonant to be appended to next word
+			$next_ender = $enders[$char_dec % count($enders)];
+		} else if ($key % 7 == 0 && $key < count($str_dec)) {
+			// Every 7 out of 7 bytes, if not last byte, consume $next_ender and start new word
+			$kore_str .= $koremutake_arr[$char_dec] . $next_ender . " ";
+			$next_ender = "";
+		} else {
+			// Normal syllable lookup
 			$kore_str .= $koremutake_arr[$char_dec];
 		}
 	}
+	// Append $next_ender to end of last word if not already consumed
+	$kore_str .= $next_ender;
 	return str_replace(" ", "-", ucwords($kore_str));
 }
 
