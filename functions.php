@@ -959,7 +959,7 @@ function checkIPRegistration(){
 	return false;
 }
 
-function checkBan($board = false) {
+function checkBan($board = false, $bypass_range=false) {
 	global $config;
 	if (!isset($_SERVER['REMOTE_ADDR'])) {
 		// Server misconfiguration
@@ -977,6 +977,9 @@ function checkBan($board = false) {
 		$ips = array_merge($ips, explode(", ", $_SERVER['HTTP_X_FORWARDED_FOR']));
 	}
 	$whitelist_items = Bans::findInWhitelist($_SERVER['REMOTE_ADDR'], true);
+	if($bypass_range){
+		$whitelist_items = array_merge($whitelist_items, [["exemption_regex" => "/VPN\\/Proxy\\/Tor.*/"]]);
+	}
 	foreach ($ips as $ip) {
 		$bans = Bans::find($_SERVER['REMOTE_ADDR'], $board, $config['show_modname']);
 		foreach ($bans as &$ban) {
@@ -1263,7 +1266,11 @@ function insertFloodPost(array $post) {
 
 function post(array $post) {
 	global $pdo, $board;
-	$query = prepare(sprintf("INSERT INTO ``posts_%s`` VALUES ( NULL, :thread, :subject, :email, :name, :trip, :capcode, :body, :body_nomarkup, :time, :time, :files, :num_files, :filehash, :password, :ip, :sticky, :locked, :cycle, 0, :embed, :slug)", $board['uri']));
+	$query = prepare(sprintf("INSERT INTO ``posts_%s``(id, thread, subject, email, name, trip , capcode, body,
+		body_nomarkup, time, bump, files, num_files, filehash, password, ip, sticky, locked, cycle, sage, embed, slug, wl_token) VALUES (
+		NULL, :thread, :subject, :email, :name, :trip, :capcode, :body, :body_nomarkup,
+		:time, :time, :files, :num_files, :filehash, :password, :ip, :sticky, :locked,
+		:cycle, 0, :embed, :slug, :wl_token)", $board['uri']));
 
 	// Basic stuff
 	if (!empty($post['subject'])) {
@@ -1319,6 +1326,11 @@ function post(array $post) {
 		$query->bindValue(':embed', $post['embed']);
 	} else {
 		$query->bindValue(':embed', null, PDO::PARAM_NULL);
+	}
+	if (!empty($post['wl_token'])) {
+		$query->bindValue(':wl_token', $post['wl_token']);
+	} else {
+		$query->bindValue(':wl_token', null, PDO::PARAM_NULL);
 	}
 
 	if ($post['op']) {
@@ -1689,7 +1701,18 @@ function deletePost($id, $error_if_doesnt_exist=true, $rebuild_after=true, $stor
 	return true;
 }
 
+function verifyUnbannedHash($filehash){
+	$query = prepare("SELECT hash FROM ``hashlist``") or error(db_error());
+	$query->execute();
+	$hashlist = $query->fetchAll(PDO::FETCH_COLUMN);
 
+	foreach ($hashlist as $bannedhash){
+		if(Post_ImageProcessing::evaluateBlockhashNearness($bannedhash, $filehash)){
+			return false;
+		}
+	}
+	return true;
+}
 
 function clean($pid = false) {
 	global $board, $config;
@@ -3001,6 +3024,8 @@ function phoneticEncoding($str){
 		}
 		// Append $next_ender to end of last word if not already consumed
 		$phone_str .= $next_ender;
+		// allow for vowel starters
+		$phone_str = preg_replace('/\bx/', '', $phone_str);
 		return str_replace(" ", "-", ucwords($phone_str));
 	}
 
