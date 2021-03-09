@@ -1,3 +1,8 @@
+/*
+Miku custom css to modify give the site a vocaloid theme. 
+Work by cool-guy, fixed and converted by ECHibiki
+*/
+
 body {
 cursor: url(/test/src/1615240453199.png), auto;
  -webkit-animation: cursor 1000ms infinite;
