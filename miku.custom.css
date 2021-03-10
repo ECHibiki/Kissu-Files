@@ -1,0 +1,62 @@
+/*
+ Miku custom css to modify and give the site a vocaloid theme. 
+ Work by cool-guy
+ Fixed, converted and published by ECHibiki
+*/
+
+
+/* This code block creates the miku cursor */
+body {
+cursor: url(/static/miku/f1.png), auto;
+ -webkit-animation: cursor 1000ms infinite;
+ animation: cursor 1000ms infinite;
+}
+@-webkit-keyframes cursor {
+  12.5% {cursor: url(/static/miku/f1.png), auto;}
+  25% {cursor: url(/static/miku/f2.png), auto;}
+  37.5% {cursor: url(/static/miku/f3.png), auto;}
+  50% {cursor: url(/static/miku/f4.png), auto;}
+  62.5% {cursor: url(/static/miku/f5.png), auto;}
+  75% {cursor: url(/static/miku/f6.png), auto;}
+  87.5% {cursor: url(/static/miku/f7.png), auto;}
+  100% {cursor: url(/static/miku/f8.png), auto;}
+}
+@keyframes cursor {
+  12.5% {cursor: url(/static/miku/f1.png), auto;}
+  25% {cursor: url(/static/miku/f2.png), auto;}
+  37.5% {cursor: url(/static/miku/f3.png), auto;}
+  50% {cursor: url(/static/miku/f4.png), auto;}
+  62.5% {cursor: url(/static/miku/f5.png), auto;}
+  75% {cursor: url(/static/miku/f6.png), auto;}
+  87.5% {cursor: url(/static/miku/f7.png), auto;}
+  100% {cursor: url(/static/miku/f8.png), auto;}
+}
+
+/* This code block creates the mini icons on the sides of replies */
+div.post.reply, .reply > .post-contents {
+   background-image: url(/static/miku/icon.gif) !important;
+   background-position: top right !important;
+   background-repeat: no-repeat !important;
+}
+
+/* This code block creates the dancing mascot */
+#lowercontents {
+background-image: url(/static/miku/dance.gif);
+background-repeat: no-repeat;
+background-attachment: fixed;
+background-position: bottom right;
+}
+
+@-moz-document url-prefix() {
+  .mascot-img{
+      background-image: url(/static/miku/dance.gif);
+  }
+}
+.mascot-img {
+    content:url("/static/miku/dance.gif");
+    width: 280px;
+    height: 250px;
+    object-fit: cover;
+    border: 1px solid #0000;
+}
+
