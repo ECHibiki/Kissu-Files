@@ -41,3 +41,14 @@ background-position: bottom right;
     border: 1px solid #0000;
     background-repeat: no-repeat;
 }
+
+/* Flying fish */
+
+#lowercontents, .main-contents {
+    background-image: url(/test/src/1624675346455.gif);
+    background-repeat: no-repeat;
+    animation-name: laura;
+    animation-duration: 20s;
+    animation-iteration-count: infinite;
+}
+ @keyframes laura {  0% { background-position: 120% 0; }  100% { background-position: -20% 0; } }
