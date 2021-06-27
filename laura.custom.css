@@ -1,0 +1,43 @@
+/* several enhancements to the miku.custom.css made for a precure theme */
+
+/*
+ Work by cool-guy
+ Fixed, converted and published by ECHibiki
+*/
+
+/* This code block creates the mini icons on the sides of replies */
+div.post.reply, .reply > .post-contents {
+   background-image: url(/static/laura/icon.gif) !important;
+   background-position: bottom right !important;
+   background-repeat: no-repeat !important;
+}
+div.post.reply div.body {
+    overflow: unset;
+    margin-top: 23px;
+    margin-right: 79px;
+    display: grid;
+}
+.reply > .post-contents {
+    padding-right: 70px;
+}
+/* This code block creates the dancing mascot */
+#delete-form, #thread_form , #ukko-form {
+background-image: url(/static/laura/mascot.png);
+background-repeat: no-repeat;
+background-attachment: fixed;
+background-position: bottom right;
+}
+
+@-moz-document url-prefix() {
+  .mascot-img{
+      background-image: url(/static/laura/mascot.png);
+  }
+}
+.mascot-img {
+    content:url(/static/laura/mascot.png);
+    width: 590px;
+    height: 580px;
+    object-fit: cover;
+    border: 1px solid #0000;
+    background-repeat: no-repeat;
+}
