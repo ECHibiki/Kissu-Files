@@ -1,0 +1,62 @@
+/* SACHIKO 2021 CSS */
+
+
+/* Sachiko's disembodied head on replies! */
+div.post.reply, .reply > .post-contents {
+   background-image: url(/test/src/1637367259275.png) !important;
+   background-position: bottom right !important;
+   background-repeat: no-repeat !important;
+}
+div.post.reply div.body {
+    overflow: unset;
+    display: grid;
+    margin-top: 23px;
+    margin-right: 79px;
+}
+.reply > .post-contents {
+    padding-right: 70px;
+}
+
+/* sachiko mascot*/
+#delete-form, #thread_form , #ukko-form {
+background-image: url(/test/src/1637364668562.png);
+background-repeat: no-repeat;
+background-attachment: fixed;
+background-position: bottom right;
+}
+
+@-moz-document url-prefix() {
+  .mascot-img{
+      background-image: url(/test/src/1637364668562.png);
+  }
+}
+.mascot-img {
+    content: url(/test/src/1637364668562.png);
+	width: 440px;
+	height: 795px;
+    object-fit: cover;
+    border: 1px solid #0000;
+    background-repeat: no-repeat;
+}
+
+/* sachiko falling ;_; */
+#lowercontents, .main-contents {
+    background-image: url(/test/src/1637357735192.png);
+    background-position: -50% -50%;
+    background-repeat: no-repeat;  
+    background-attachment: fixed;
+    animation-delay: 20s;
+    animation-timing-function: linear;
+    animation-name: kongfall; 
+    animation-duration: 50s; 
+    animation-iteration-count:infinite; 
+}
+@keyframes kongfall {  
+0% { background-position: 50% -150%; }  
+100% { background-position: 50% 7000%; }
+}
+
+/* Sachiko cursor */
+* {
+cursor: url(/test/src/1637365259296.png), auto !important;
+}
