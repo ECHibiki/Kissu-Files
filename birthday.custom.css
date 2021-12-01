@@ -67,7 +67,7 @@ background: linear-gradient(90deg, rgba(33,66,154,1) 0%, rgba(119,40,198,1) 100%
 p, .preview{
 color: #ffdff2 !important;
 }
-.toggles ,.sidebar-title-header, h2,.updater ,.page-list-item,.options-opener, .filter-toggle, .sage {
+.toggles ,.sidebar-title-header, h2,.updater ,.page-list-item,.options-opener, .filter-toggle, .sage , .featured-section, .friend-section {
 color:unset;
 background:unset;
 text-shadow:unset;
