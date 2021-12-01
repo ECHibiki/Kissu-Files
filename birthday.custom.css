@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Lemonada&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Macondo+Swash+Caps&display=swap');
 /* WALLPAPER */
-#lowercontents, .main-contents , .main-sections.thread-window {
+#lowercontents, .main  {
     background-image: url(https://luna.kissu.moe/test/src/1638177030971.png), linear-gradient(#21429A, #7728C6);
     /*background-position: 0% 0%;*/
     background-repeat: repeat-xy; 
@@ -41,7 +41,14 @@ background-position: bottom right;
       background-image: url(/test/src/1638243646829.png);
   }
 }
-
+.mascot-img {
+    content:url(/test/src/1638243646829.png);
+    width: 878px;
+    height: 930px;
+    object-fit: cover;
+    border: 1px solid #0000;
+    background-repeat: no-repeat;
+}
 
 
 /* REPLY BOX */
@@ -157,9 +164,10 @@ form table {
     background: unset;
 }
 
-.button , .qr-button{
-background:linear-gradient(0deg, #b893e3 0%, #724da2 18%, #8e92d5 100%);
+.button, .qr-button {
+    background: linear-gradient(0deg, #b893e3 0%, #a77ae1 18%, #bfc3fb 100%);
 }
+
 input, .active, .top-content {
     background-color: #7375c0;
     color: white;
@@ -215,4 +223,23 @@ h4 {
 }
 .pv-ommitted {
     margin: 0;
+}
+.main-sections.thread-window{
+	background:unset;
+}
+.main {
+    z-index: 0;
+    position: relative;
+}
+
+.mascot-img {
+    opacity: 0.5;
+}
+.mascot-img {
+    content: url(/test/src/1638243646829.png);
+    width: 778px;
+    height: 800px;
+    object-fit: cover;
+    border: 1px solid #0000;
+    background-repeat: no-repeat;
 }
