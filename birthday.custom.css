@@ -177,3 +177,6 @@ background:#7175bf;
 .fileboard-body > tr:nth-child(2n+1){
 background-color:#481448;
 }
+.popular-thread-comment, .popular-thread-board, .summary-time, .summary-board, .stats-table {
+    color: unset !important;
+}
