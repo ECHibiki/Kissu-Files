@@ -5,7 +5,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Macondo+Swash+Caps&display=swap');
 /* WALLPAPER */
 #lowercontents, .main  {
-    background-image: url(https://luna.kissu.moe/test/src/1638177030971.png), linear-gradient(#21429A, #7728C6);
+    background-image: url(https://kissu.moe/static/themes/nekomimi.png), linear-gradient(#21429A, #7728C6);
     /*background-position: 0% 0%;*/
     background-repeat: repeat-xy; 
     background-attachment: fixed;
@@ -32,7 +32,7 @@ font-family: 'Lemonada', cursive;
 
 /* MASCOT */
 #delete-form, #thread_form , #ukko-form {
-background-image: url(/test/src/1638243646829.png);
+background-image: url(https://kissu.moe/static/themes/hazuki.png);
 background-size: 40%;
 background-repeat: no-repeat;
 background-attachment: fixed;
@@ -41,11 +41,11 @@ background-position: bottom right;
 
 @-moz-document url-prefix() {
   .mascot-img{
-      background-image: url(/test/src/1638243646829.png);
+      background-image: url(https://kissu.moe/static/themes/hazuki.png);
   }
 }
 .mascot-img {
-    content:url(/test/src/1638243646829.png);
+    content:url(https://kissu.moe/static/themes/hazuki.png);
     width: 878px;
     height: 930px;
     object-fit: cover;
@@ -57,7 +57,7 @@ background-position: bottom right;
 /* REPLY BOX */
 
 div.post.reply, .reply > .post-contents {
-background-image: url(https://luna.kissu.moe/test/src/1638247860118.png) , linear-gradient(45deg, rgba(90,0,21,0.55) 0%, rgba(26,0,90,0.55) 100%)  !important;
+background-image: url(https://kissu.moe/static/themes/hazuki-mini.png) , linear-gradient(45deg, rgba(90,0,21,0.55) 0%, rgba(26,0,90,0.55) 100%)  !important;
 -webkit-box-shadow: 5px 5px 15px 5px #7C5EFF, -3px 5px 15px 3px rgba(255,87,94,0.66); 
 box-shadow: 5px 5px 15px 5px #7C5EFF, -3px 5px 15px 3px rgba(255,87,94,0.6);
    background-position: bottom right !important;
@@ -239,7 +239,7 @@ h4 {
     opacity: 0.5;
 }
 .mascot-img {
-    content: url(/test/src/1638243646829.png);
+    content: url(https://kissu.moe/static/themes/hazuki.png);
     width: 778px;
     height: 800px;
     object-fit: cover;
