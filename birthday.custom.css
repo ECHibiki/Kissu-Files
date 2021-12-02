@@ -1,3 +1,6 @@
+// Design by Cool-Guy
+// Application by Verniy
+
 @import url('https://fonts.googleapis.com/css2?family=Lemonada&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Macondo+Swash+Caps&display=swap');
 /* WALLPAPER */
@@ -242,4 +245,42 @@ h4 {
     object-fit: cover;
     border: 1px solid #0000;
     background-repeat: no-repeat;
+}
+
+.qr-preview-container {
+    background-color: #3a3aa7;
+}
+
+a, a:visited, .kissu-link.page-number, .options-opener , .top-bottom a{
+    text-decoration: underline;
+    color: #eb9f9f;
+}
+
+.button, .qr-button {
+    background: linear-gradient(0deg, #6937a2 0%, #5c2f97 18%, #ac6fdf 100%);
+}
+
+.qr-opener > a {
+    color: #f1c9ff;
+}
+
+.page-list-item{
+color:unset;
+}
+
+.qr-button:hover, .qr-button:focus-visible {
+    box-shadow: -0.5px .5px .5px #151515;
+    background: linear-gradient(#a166d5, #955dca, #64369e);
+}
+.subject {
+    color: #e52bff;
+}
+.noko, .noko:visited{
+text-shadow:unset;
+}
+.pagelist {
+    background: #5732bd;
+}
+.post-queue {
+    background: #574aae;
 }
