@@ -273,7 +273,7 @@ color:unset;
     background: linear-gradient(#a166d5, #955dca, #64369e);
 }
 .subject {
-    color: #e52bff;
+    color: #e52bff !important;
 }
 .noko, .noko:visited{
 text-shadow:unset;
