@@ -284,3 +284,7 @@ text-shadow:unset;
 .post-queue {
     background: #574aae;
 }
+.page-frame, .error-frame {
+    background: #7175bf;
+}
+
