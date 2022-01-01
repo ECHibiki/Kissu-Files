@@ -1,0 +1,51 @@
+<!-- See https://codepen.io/echibiki/pen/eYGVYoG for unminified JS and clearer reading -->
+<p>Happy New Years!</p>
+  <audio loop crossOrigin="Anonymous" id="audio" src="https://kissu.moe/static/sounds/かめりあ feat. ななひら - クリスマスなんて興味ないけど.mp3" controls></audio>
+
+<span id="rocket-emitter" style="position:fixed;width:100%;bottom:0;left:0"></span>
+
+<style>.rocket-particle{
+  position:fixed;
+  background-color:black;
+  width:8px;
+  height:16px;
+}
+
+.explosion-particle{
+  position:fixed;
+  border-radius:1px;
+}
+
+form table {
+    background-color: unset;
+    padding: .5em 0;
+    margin: auto;
+}
+
+form table tr th {
+    background: #333;
+    color: #af0a0f;
+    font-weight: 800;
+    text-align: left;
+    padding: 0;
+}
+.intro a.sage, p.intro a.sage span.name, p.intro a.noko:hover, p.intro a.noko:hover span.name{
+color:#117743;
+}
+
+</style>
+<style>
+.reply > .post-contents , .side-segment, .banner-cover, .sidebar-container , .options-window , #qr-handle , .qr-filebar , .page-frame, .error-frame{
+ background: #f0f9ff;
+}
+p, .preview {
+color:black;
+}
+
+
+</style>
+<link rel="stylesheet" type="text/css" href="/stylesheets/new-years-theme.css">
+
+<script>
+window.onload=init;const TRIGGER_VOL=1,ROCKET_SPEED=5,STANDARD_DETONATION_FUSE=1300,FIRE_RATE=60/70*1e3/4;function init(){var t={element_handle:document.getElementById("rocket-emitter"),projectile_list:[],getPosition:function(){let t=this.elementHandle.getBoundingClientRect();return{x0:t.x,x1:t.width,y:t.y}},fireRocket:function(){let t={element_handle:void 0,explosion_type:0,explosion_object:void 0,creation_time:0,detonation_time:0,rotation:Math.PI/2,position:{x:0,y:0},getPosition:function(){return this.position},setPosition:function(t){this.position.x=t.x,this.position.y=t.y,this.element_handle.setAttribute("style",`\n              left: ${this.position.x}%;\n              bottom: ${this.position.y}%;\n            `)},detonate:function(){this.detonation_time=Date.now(),this.explosion_object={element_handles:[],effect_center_position:{},color:"#ffffff",rotation_arms:1,arm_segments:6,arm_spacing:1.5,createPattern:function(t){let e=2*Math.PI/this.rotation_arms;for(let o=0;o<this.rotation_arms;o++){let i=t+o*e,n={x:Math.cos(i),y:Math.sin(i)};for(let t=0;t<this.arm_segments;t++){let e=document.createElement("DIV");e.setAttribute("class","explosion-particle");let o=7-t,i={x:this.effect_center_position.x+n.x*(t+1)*this.arm_spacing,y:this.effect_center_position.y+n.y*(t+1)*this.arm_spacing};e.setAttribute("style",`\n                    background-color:${this.color};\n                    width:${o}px;\n                    height:${o}px;\n                    bottom:${i.y}%;\n                    left:${i.x}%;                       \n                  `),document.body.appendChild(e),this.element_handles.push(e)}}},clearPattern:function(){for(let t=this.element_handles.length-1;t>=0;t--)this.element_handles[t].remove();this.element_handles=[]}},this.explosion_object.effect_center_position=this.getPosition(),this.explosion_object.color="#"+Math.floor(3881787*Math.random()+12895428).toString(16),this.explosion_object.rotation_arms=Math.floor(6*Math.round(Math.random())+6),this.explosion_object.createPattern(this.rotation),this.element_handle&&this.element_handle.remove()},unset:function(){this.element_handle&&this.element_handle.remove(),this.explosion_object&&this.explosion_object.clearPattern()}},e=document.createElement("DIV");e.setAttribute("class","rocket-particle");let o=70*Math.random()+15,i=25*Math.random()-25;document.body.appendChild(e),t.element_handle=e,t.setPosition({x:o,y:i}),t.explosion_type=0,t.explosion_object=void 0,t.creation_time=Date.now(),t.rotation=(20*Math.random()-10+90)*(Math.PI/180),this.projectile_list.push(t)},moveRockets:function(){let t=this.projectile_list.length;for(let e=0;e<t;e++){let t=this.projectile_list[e].getPosition();t.x+=ROCKET_SPEED*Math.cos(this.projectile_list[e].rotation),t.y+=ROCKET_SPEED*Math.sin(this.projectile_list[e].rotation),this.projectile_list[e].setPosition(t)}},detonateRockets:function(){let t=this.projectile_list.length;for(let e=0;e<t;e++)!this.projectile_list[e].detonation_time&&this.projectile_list[e].creation_time+STANDARD_DETONATION_FUSE<Date.now()&&this.projectile_list[e].detonate()},cleanUpRockets:function(){for(let t=this.projectile_list.length-1;t>=0;t--)this.projectile_list[t].detonation_time&&this.projectile_list[t].detonation_time+STANDARD_DETONATION_FUSE<Date.now()?(this.projectile_list[t].unset(),this.projectile_list.splice(t,0)):this.projectile_list[t].creation_time+2*STANDARD_DETONATION_FUSE<Date.now()&&(this.projectile_list[t].unset(),this.projectile_list.splice(t,0))}},e=document.getElementById("audio"),o=!1,i=void 0;let n=function(t){if(!o){o=!0;var n=new(window.AudioContext||window.webkitAudioContext),s=n.createMediaElementSource(e);(i=n.createAnalyser()).fftSize=2048;var l=n.createGain();l.gain.value=1,s.connect(l),l.connect(n.destination),s.connect(i)}};e.onplay=n,document.body.onclick=n,e.oncanplay=n;let s=Date.now(),l=function(){sumOfSquaresVolume(getWaveform(i))>TRIGGER_VOL&&s+FIRE_RATE<Date.now()&&(s=Date.now(),t.fireRocket()),t.moveRockets(),t.detonateRockets(),t.cleanUpRockets()};window.setInterval(function(){o&&l()},64)}function getWaveform(t){var e=new Float32Array(t.frequencyBinCount);return t.getFloatTimeDomainData(e),e}function sumOfSquaresVolume(t){let e=t.length;if(!e)return 0;let o=0,i=0;for(let i=0;i<e;i++)o+=t[i];i=o/e;let n=0;for(let o=0;o<e;o++)n+=(t[o]-i)**2;return n}
+</script>
