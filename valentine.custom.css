@@ -1,0 +1,20 @@
+#lowercontents {
+  background-image: url(/static/themes/riamu.png);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: bottom right;
+}
+
+#mascots > div {
+  background-image: url(/static/themes/riamu.png);
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 689px;
+  height: 763px;
+  z-index:-1;
+}
+
+.mascot-img {
+  display: none;
+}
