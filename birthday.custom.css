@@ -39,11 +39,6 @@ background-attachment: fixed;
 background-position: bottom right;
 }
 
-@-moz-document url-prefix() {
-  .mascot-img{
-      background-image: url(https://kissu.moe/static/themes/hazuki.png);
-  }
-}
 .mascot-img {
     content:url(https://kissu.moe/static/themes/hazuki.png);
     width: 878px;
