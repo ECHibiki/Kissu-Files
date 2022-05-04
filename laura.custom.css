@@ -28,11 +28,6 @@ background-attachment: fixed;
 background-position: bottom right;
 }
 
-@-moz-document url-prefix() {
-  .mascot-img{
-      background-image: url(/static/laura/mascot.png);
-  }
-}
 .mascot-img {
     content:url(/static/laura/mascot.png);
     width: 590px;
