@@ -25,11 +25,7 @@ background-attachment: fixed;
 background-position: bottom right;
 }
 
-@-moz-document url-prefix() {
-  .mascot-img{
-      background-image: url(/test/src/1637364668562.png);
-  }
-}
+
 .mascot-img {
     content: url(/test/src/1637364668562.png);
 	width: 440px;
