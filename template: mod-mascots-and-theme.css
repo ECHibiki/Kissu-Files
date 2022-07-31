@@ -15,7 +15,7 @@
 
 /* remove the kissu-ui effects and leave vichan working as is... we could potentially merge the ::before statement with this, but it might be harder for you to follow and the benefit of not having to enter data into URL fields. */
 div.post.reply {
-   background-image: var(--corner-iamge);
+   background-image: var(--corner-image);
    background-position: bottom right !important;
    background-repeat: no-repeat !important;
 }
@@ -27,7 +27,7 @@ div.post.reply {
   background-image: unset;
 }
 .reply > .post-contents::before {
-  background-image: var(--corner-iamge);
+  background-image: var(--corner-image);
   background-position: bottom right !important;
   background-repeat: no-repeat !important; /* up to this point could be moved into div.post.reply to save on copy-paste actions */
   content: "not-visible"; /* There needs to be symbol text here... on my browser anyways */
