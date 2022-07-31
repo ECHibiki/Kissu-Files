@@ -1,0 +1,63 @@
+
+<style>
+
+:root{
+  --corner-image: url(/b/src/1659220718658.gif);
+  --mascot-override: url(/b/src/1659220745025.png);
+  --mascot-width: 350px;
+  --mascot-height: 350px;
+}
+
+/* 
+   Instructions within the comment blocks, for another example, look at what I did on 
+   There are many ways for you to create HTML without having server access, just by using CSS
+   https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-elements
+*/
+
+/* remove the kissu-ui effects and leave vichan working as is... we could potentially merge the ::before statement with this, but it might be harder for you to follow and the benefit of not having to enter data into URL fields. */
+div.post.reply {
+   background-image: var(--corner-iamge);
+   background-position: bottom right !important;
+   background-repeat: no-repeat !important;
+}
+
+/* position:absolute will just do usless things without this rule */
+.reply > .post-contents{
+  position:relative;
+  z-index: 0; /* this gives the top level container a z-index value to prevent conflicts and give children a z-index to work with the git */
+  background-image: unset;
+}
+.reply > .post-contents::before {
+  background-image: url(/b/src/1659220718658.gif);
+  background-position: bottom right !important;
+  background-repeat: no-repeat !important; /* up to this point could be moved into div.post.reply to save on copy-paste actions */
+  content: "not-visible"; /* There needs to be symbol text here... on my browser anyways */
+  font-size: 0;
+  line-height: 0;  /* This effectively removes the text */
+  width: 97%;
+  height: 100%;
+  display: block; /* The pseudo element is now functionally an empty div */
+  position: absolute; /* This allows for the div to be sized properly. Without it there's some things that go wrong which I haven't researched into yet. */
+  z-index: 0; /* Don't put the pseudo element behind the BG, but put it behind the text. */
+}
+
+#lowercontents {
+    background-image: var(--corner-iamge);
+    background-position: bottom right;
+    background-repeat: no-repeat;  
+    background-attachment: fixed;
+}
+.mascot-img {
+  content: var(--mascot-override) !important; /* !important should be used here because we want to remove other people's mascots for our own temporary ones */
+  width:  var(--mascot-width) !important;
+  height:  var(--mascot-heigh) !important;  /* maybe there's a way to remove these two lines...*/
+  object-fit: cover;
+  border: 1px solid #0000;
+  background-repeat: no-repeat;
+}
+@supports not selector(:read-only) { /* Browsers at palemoon's version need this */
+ .mascot-img {
+  background-image: var(--mascot-override);
+ }
+}
+</style>
