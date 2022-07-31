@@ -24,8 +24,20 @@ div.post.reply {
 .reply > .post-contents{
   position:relative;
   z-index: 0; /* this gives the top level container a z-index value to prevent conflicts and give children a z-index to work with the git */
-  background-image: unset;
+  padding-right: 45px;
+  padding-bottom: 45px;
 }
+.preview.reply > .post-contents {
+  padding-right: 0px;
+}
+.reply .post-contents > * {
+  position: relative;
+}
+.reply .file-contents {
+  position: relative;
+  z-index: 1;
+}
+
 .reply > .post-contents::before {
   background-image: var(--corner-image);
   background-position: bottom right !important;
@@ -33,7 +45,7 @@ div.post.reply {
   content: "not-visible"; /* There needs to be symbol text here... on my browser anyways */
   font-size: 0;
   line-height: 0;  /* This effectively removes the text */
-  width: 97%;
+  width: 99%;
   height: 100%;
   display: block; /* The pseudo element is now functionally an empty div */
   position: absolute; /* This allows for the div to be sized properly. Without it there's some things that go wrong which I haven't researched into yet. */
