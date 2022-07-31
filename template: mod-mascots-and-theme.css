@@ -1,5 +1,4 @@
-
-<style>
+/* Setting these variable will configure the style */
 
 :root{
   --corner-image: url(/b/src/1659220718658.gif);
@@ -28,7 +27,7 @@ div.post.reply {
   background-image: unset;
 }
 .reply > .post-contents::before {
-  background-image: url(/b/src/1659220718658.gif);
+  background-image: var(--corner-iamge);
   background-position: bottom right !important;
   background-repeat: no-repeat !important; /* up to this point could be moved into div.post.reply to save on copy-paste actions */
   content: "not-visible"; /* There needs to be symbol text here... on my browser anyways */
@@ -60,4 +59,3 @@ div.post.reply {
   background-image: var(--mascot-override);
  }
 }
-</style>
