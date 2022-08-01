@@ -24,7 +24,6 @@ div.post.reply {
 .reply > .post-contents{
   position:relative;
   z-index: 0; /* this gives the top level container a z-index value to prevent conflicts and give children a z-index to work with the git */
-  padding-right: 45px;
   padding-bottom: 45px;
 }
 .preview.reply > .post-contents {
