@@ -1,0 +1,848 @@
+:root { /*  */
+--fg0: #A74294; /* Top Panel Board Title */
+--fg1: #c4c4c4; /* Top Panel Board Subtitle */
+--fg2: #e6cabf; /* New Thread Button Text */
+--fg3: #813767; /* RSS and Hide Icons */
+--fg4: #d2166f; /* Updater */
+--fg5: #fffef5; /* Left Panel Section Titles (Controls, Nav) */
+--fg6: #d2166f; /* Top Bottom */
+--fg71: #fff000; /* Page Arrows/Brackets  */
+--fg72: #fff000; /* Inactive Page Number */
+--fg73: #fff000; /* Active Page Number */
+--fg8: #fff000; /* Left (and top) Panel Board Titles  */
+--fg9: #fff000; /* Left Panel Bottom Links (Steam etc) */
+--fga: #00ff00; /* Options */
+--fgb: #17e1ff; /* Boxes (Search, Thread Order) */
+--fgc: #f000f0; /* Filename */
+--fgd: #c4c4c4; /* File Info Text */
+--fge: #0f0ff0; /* Time of Post */
+--fgf: #000f00; /* "No." before post number */
+--fgf2: #000f00; /* "No." before post number Hover */
+--fgg: #f00f00; /* Post Number */
+--fgg2: #f00f00; /* Post Number Hover */
+--fgh: #ecd5da; /* Post Text */
+--fgi: #80b7a5; /* >Quoting */ 
+--fgj: #cc9ccc; /* ¥Yentext */
+--fgk: #d2166f; /* Link Text */
+--fgk2: #f968ad; /* Link Text Hover */
+--fgl: #; /* Default Name */
+--fgm: #; /* Sage (and Repo) Name */
+--fgm2: #; /* Sage (and Repo) Name Hover */
+--fgn: #; /* Email Name */
+--fgn: #; /* Email Name Hover */
+--fgo: #c4c4c4; /* QR Titlebar Text */
+--fgp: #f08f0a; /* QR Shortcut Letters */
+--fgq: #0f0c0a; /* Post Queue Text Active */
+--fgr: #0f0c0a; /* Post Queue Text INactive */
+--fgs: #f08f0a; /* Buttons Text */
+--fgt: #f0f0f0; /* all other text */
+
+
+--bg0: #280522; /* Top Panel BG */
+--bg1: #280522; /* Sidebar BG  */
+--bg2: #0f0200; /* New Thread Button BG */
+--bg3: #0000ff; /* Page Bracket Area BG (maybe) */
+--bg4: #000000; /* RSS BG Left */
+--bg5: #000000; /* RSS BG Center */
+--bg6: #000000; /* RSS BG Right */
+--bg7: #0fff00; /* Boxes BG (Search, Thread Order) */
+--bg8: #280522; /* Main BG (under threads) */
+--bg9: #443168; /* Thread BG (maybe make transparent like background: rgba(7,19,71,0.5);) */
+--bga: #593168; /* OP BG */
+--bgb: #593168; /* Reply BG */
+--bgc: #000000; /* Spoiler Text Block */
+--bgd: #ffb7f4; /* Quick Reply Title Bar BG (all windows?) */
+--bge: #ffb7f4; /* Quick Reply Comment Box */
+--bgf: #ffb7f4; /* Quick Reply Shortcut Letters BG */
+--bgg: #ffb7f4; /* Quick Reply Post Queue BG */
+--bgh: #cb7cc1; /* Quick Reply Buttons BG */
+--bgi:  ; /* Main Border Color */
+--bgj: ; /* Other Border Color */
+
+--shad0: 1px 1px 0 rgb(66,49,10); /* Text Shadow Primary */
+--shad1: 1px 1px 0 rgb(66,49,10); /*  Text Shadow Secondary */
+--shad2: 1px 1px 0 rgb(66,49,10); /* Text Shadow Tertiary */
+
+--other1:;
+--tert1: #c2ccd5;  /* Main Text Shadow */                    
+--tert2: 1px 1px 0 rgb(66,49,10); /* Other Text Shadow  */
+--tert3: #83b1d2; /* Main Hover Text */
+--tert4: #5cb0b4; /* Other Hover Text */
+--tert5: #047e83; /* Clickable Text */
+--tert6: #0a7893; /* Default Name */
+--tert7: #ff00de; /* Sage Name */
+--tert8: #fffef5; /* Email Name */
+--tert9: #baee3c; /*  */
+--tert10: #eecf3c;
+--tert11: #98e8ff;
+--gradient1: linear-gradient(180deg, rgb(96, 80, 25) 0%,rgb(252, 208, 65) 20%,rgb(96, 80, 25) 70%); 
+--gradient2: radial-gradient(circle, rgba(123,92,63,1) 0%, rgba(95,68,44,1) 50%, rgba(123,92,63,1) 100%);
+--gradient3: ;
+--gradient4: ;
+--gradient5: ;
+--gradient6: ;
+
+}
+
+/* Border Removal */
+
+.active-threads>ul>li,
+.featured-threads>ul>li,
+.banner-wide {
+border:unset
+}
+
+
+ /* ICONS */
+ 
+.svg-icon {
+ filter:invert(27%) sepia(26%) saturate(1391%) hue-rotate(263deg) brightness(93%) contrast(89%)
+}
+.svg-icon:hover {
+ filter:invert(32%) sepia(91%) saturate(4304%) hue-rotate(348deg) brightness(86%) contrast(102%)
+}
+
+/* Icon for audio player (not used for video) */
+.media-player-icon {
+filter: invert(30%) sepia(14%) saturate(5297%) hue-rotate(282deg) brightness(96%) contrast(93%);	
+}
+
+
+/* /// QUICK REPLY ICONS NEXT TO REPLY BUTTON \\\ */
+
+/* Image Selected, Spoiler Controls */
+.spoiler-container.qr-controls {
+filter: invert(60%) sepia(84%) saturate(2079%) hue-rotate(85deg) brightness(112%) contrast(118%);	
+}	
+
+/* This filter applies on top of above? */
+.spoiler-container.qr-controls.modifier-on {
+filter: invert(79%) sepia(67%) saturate(1266%) hue-rotate(360deg) brightness(103%) contrast(106%);
+}	
+
+/* Remove File Upload (maybe make it red?) */
+.svg-icon.x-icon.remove-file-icon {
+filter: invert(14%) sepia(97%) saturate(7086%) hue-rotate(4deg) brightness(95%) contrast(116%);
+}	
+
+/* NSFW Spoiler Triggered */
+.svg-icon.nsfw-icon {
+filter: invert(39%) sepia(97%) saturate(1669%) hue-rotate(294deg) brightness(101%) contrast(98%);
+}
+
+/* QR Posting Icons Colors Inactive */
+.svg-icon.preview-icon, .svg-icon.url-icon, .svg-icon.preview-icon.modifier-on {
+filter: invert(10%) sepia(86%) saturate(7389%) hue-rotate(276deg) brightness(112%) contrast(119%);
+}	
+
+/* QR Posting Icons Colors ACTIVE */
+spoiler-container.qr-controls.modifier-on, svg-icon.x-icon.remove-file-icon {
+filter: invert(76%) sepia(97%) saturate(938%) hue-rotate(1deg) brightness(106%) contrast(108%);
+}
+
+/* Padding Between Post Preview and Reply Button */
+.svg-icon.preview-icon, .svg-icon.preview-icon.modifier-on  {
+padding-right:2px;
+}
+
+/* \\\ ICONS END /// */
+
+
+/* Clickables (URLs etc) */
+a, a:visited {
+color:var(--fgk);
+#text-shadow: var(--shad0);
+}
+
+a:hover, a:visited:hover {
+color:var(--fgk2);
+#text-shadow: var(--shad0);
+}
+
+/* MASCOT [DISABLED] */
+/* .mascot-img {
+content: url(/test/src/1725251033321.png);
+width: 350px; !important;
+height: auto; !important;
+object-fit: cover;
+z-index: -0;
+border: 0px solid #0000;
+background-repeat: no-repeat;
+}
+*/
+ 
+ 
+/* TOP FRAME */
+
+/* Panel BG and Top board list brackets */
+.main-sections.thread-window {
+background-color: var(--bg0);
+color: var(--fgk);
+}
+
+/* Top Frame Area and Board Subtitle */
+.center-meta {
+#font-family:"Chicle";
+#letter-spacing: 3px;
+#font-size: 130%;
+color: var(--fg1);
+}
+
+/* Board Title */
+h1 {
+color: var(--fg0);
+}	
+
+/* '+News' Text on Left Side */
+.news-toggle {
+ color: var(--fg5);
+}
+
+/* Board Search */
+input#board-search.board-search-input {
+color: var(--fgb); 
+background-color: var(--bg7)
+}
+
+/* Thread Order Dropdown */
+select {
+color: var(--fgb); 
+background-color: var(--bg7)
+}
+
+/* Top Border */
+hr {
+border-color:#2c292f;
+border-radius:5px; 
+border: unset
+}
+
+/* SIDEBAR */
+/* side-segment is lower area | text color carries over to RSS feed */
+.side-segment, .sidebar-container {
+color: var(--bg2);
+#font-family:"neuton";
+#font-weight: 700;
+text-shadow: var(--tert2);
+background-color: var(--second2);
+#background-image: url(/test/src/1725505769330.png);
+border-color: var(--tert7);
+border-right: 22px solid;
+}
+
+/* Lines Between Sidebar Sections */
+.break-li {
+ border-top:1px solid 
+border-color: #2c292f
+}
+
+
+/* Left Panel Titles (Controls/Nav)*/
+.sidebar-title-header, h2 {
+color: #eefbff !important;
+font-family:"Chicle";
+letter-spacing: 2px;
+#text-shadow: 2px 2px 2px rgba(20, 20, 20, 1)
+}
+
+
+/* Page Brackets */
+.page-list-item {
+color: var(--fg71);
+#background-color: #00ffff;
+}
+
+/* Sidebar Page Numbers */
+.kissu-link.page-number {
+color: var(--fg72);
+}
+
+/* Current Page Number */
+.page-list-item.current-page>.page-number {
+color: var(--fg73);
+}
+
+/* Sidebar Board Links */
+a.kissu-link.sidebar-board-nav {
+color: #00ff00; 
+}
+
+/* DISABLED Lines between sidebar sections DISABLED */
+/* .break-li {
+ #border-top:7px dotted #5e38e9
+}
+*/
+
+/* The RSS and hide sidebar buttons */
+.toggles {
+ color:#49c5d7;
+ text-shadow: 0px 0px 5px rgba(251, 139, 201, 1)
+}
+
+/* New Thread Button */
+.button {
+ background:linear-gradient(0deg,#a641b5 0%,#ce73b4 18%,#ca82c9 100%);
+ border:1px solid #bbadad;
+ text-decoration:none;
+ font-weight:700
+}
+
+/* Updater is the text below New Thread button */
+.updater:hover {
+ color:#fb8bc9;
+ text-decoration:underline
+}
+.updater:active {
+ color:#f5f285
+}
+.updater {
+ cursor:pointer
+}
+
+/* Below Controls */
+.top-bottom {
+ color:#fedf50;
+}
+
+/* Steam Theater Chat Links */
+.circle-item {
+color: #ffffff;  
+}
+
+
+/* Options and Hidden Post Toggle */
+.options-opener,
+.filter-toggle {
+ color:#5bf6b7;
+ font-size:16px;
+ text-shadow: 1px 1px 6px rgba(1, 154, 176, .75);
+}
+
+
+/* Theme Selector */
+.style-select {
+color: var(--fgb); 
+background-color: var(--bg7)
+}
+
+/* /// RSS \\\ */
+ 
+/* RSS Left Side*/
+.summary-time {
+color:#f5f285;
+background-color: #00ff00;
+}
+
+/* RSS Center */
+.summary-container,
+.summary-swiper {
+border:1px solid #797280;
+background-color: #000000;
+border-right:1px solid #3d284f;
+
+/* RSS Right Side */
+.summary-board {
+color:#f5f285;
+background-color: #00ff00;
+}
+ 
+/* MAIN BACKGROUND */
+.main-contents {
+#background-image: url(/test/src/1725508939107.png);
+background-color: var(--second4); 
+background-size: cover;
+background-position: center;
+background-repeat: no-repeat;  
+background-attachment: fixed;
+}
+
+/* Thread Area but not Base BG */
+.thread-contents {
+background-color: #8121a1;
+}
+
+/* OP  */
+.post .post-contents {
+color: var(--primary4);
+background-color: var(--second5);
+}
+
+/* OP background when OP is highlighted */
+.highlight.op>.post-contents,
+.hover-box.op>.post-contents {
+ background: ;
+}
+
+/* REPLIES */
+.reply>.post-contents {
+color: var(--primary4);  
+background-color: var(--second6);
+}
+
+/* Reply background when reply is highlighted */
+.highlight.reply>.post-contents {
+ background:radial-gradient(circle, rgba(0,103,117,0.75) 0%, rgba(14,71,159,0.75) 100%);
+}
+
+/* Cited post (>123) seen as pop-up */
+.preview > .post-contents {border:20px dashed #2cb436;
+ color: #c74eff;
+ background-color: #ffff00;}
+ 
+/* Filename */
+a[target="_image-finfo"] {
+color: #ffffff;  
+}
+
+/* Filesize and dimensions */
+.finfo {
+color: #ffffff;  
+}
+
+/* Time of Post */
+time.date {
+color: #ff0f0f;
+}	
+
+/* "No." ahead of post number */
+.post-highlighter {
+ text-decoration:none;
+ color:#ff98d1
+}
+
+.post-highlighter:hover {
+ text-decoration:none;
+ color:#60a483;
+}
+ 
+/* post number */
+a.qr-number {
+ text-decoration:none; 
+ color:#e094ff;
+ letter-spacing:.5px
+}
+
+a.qr-number:hover,
+a.post-highlighter:hover {
+ cursor:pointer;
+ color:#ff98d1
+}
+ 
+/* Thread subject */
+.subject {
+ #color:#bba668;
+ font-family:"bubble shine";
+ font-weight:100;
+ letter-spacing: 2px;
+ background: linear-gradient(90deg, rgba(230,36,122,1) 8%, rgba(233,81,127,1) 12%, rgba(246,174,102,1) 27%, rgba(241,226,33,1) 40%, rgba(160,209,134,1) 55%, rgba(99,178,207,1) 70%, rgba(139,147,194,1) 85%, rgba(166,103,167,1) 100%); 
+ -webkit-background-clip:text;
+ -webkit-text-fill-color:transparent;
+  font-size:140%;
+}
+
+/* reply citing >123 */
+.cite {
+ color:#efc8ff
+}
+.cite:hover {
+ color:#fb8bc9
+}
+
+/* Spoiler Text Block */
+
+span.markup.spoiler {
+color: #00f6ff;
+background-color: #000000;	
+border:2px solid #ffffff;
+}	
+
+/* /poll/ stuff */
+/* 'View Results' */
+.poll-expander>a {
+ color:#f5f285;
+ text-shadow: 0px 0px 5px rgba(91, 246, 127, 1);
+ }
+ 
+/* /poll/ stuff */
+.qr-poll-question {
+ background:#00082b;
+ color:#f5f285
+}
+.plus-min-button {
+ background:#21af75
+}
+.
+.helper-item:hover {
+ color:#737373
+}
+.qr-handle {
+border:20px dashed #2cb436;
+ color: #c74eff;
+ background-color: #ffff00;
+}
+
+/* Poll Option Color */
+.bar-label,
+
+/* Poll Thread Number thing (ehh) */
+.chart-title {
+ fill:#00ff1e
+} 
+
+/* /ec/ voting stuff */
+
+.score-box {
+color: #ff0000;
+background-color: #b50000;	
+}	
+.score-box:hover {
+color: #8859ff;
+background-color: #5027ba;		
+}	
+.score-counter {
+color: #fffc00;
+background-color: #9b9a30;		
+}	
+
+.score-submitted {
+color: #00ff24;
+background-color: #29b03c;	
+}
+
+/* Line/Area above Slow Reply Thing at Bottom of Thread */
+.thread-contents>ol {
+ border-bottom:7px dashed #eacb3e;
+}
+
+/* Arrows for 'Similar Threads' at Bottom of Thread */
+.similar-rotator {
+ color:#fedf50;
+ border:1px solid #ead5e8
+}
+
+/* Background color in 'show hidden posts' mode */
+.thread.hidden {
+ background:linear-gradient(90deg, rgba(230,36,122,1) 8%, rgba(233,81,127,1) 12%, rgba(246,174,102,1) 27%, rgba(241,226,33,1) 40%, rgba(160,209,134,1) 55%, rgba(99,178,207,1) 70%, rgba(139,147,194,1) 85%, rgba(166,103,167,1) 100%); 
+}
+ 
+/* Reply background color during 'show hidden posts mode' */
+.hidden.reply>.post-contents {
+ background:linear-gradient(#191ab7 0%,#5e38e9,#06078a)
+}
+ 
+/* /// POSTING NAMES AND EFFECTS \\\ */
+/* Default Anonymous name and tripcode */
+.no-opt,
+.trip {
+color: var(--tert8);
+background-color: #251019;
+border-radius: 22px;
+border-width: 2px;
+border-style: solid;
+border-color: #d3b666;
+}
+
+.trip {
+ font-style:italic
+}
+ 
+.sage,
+.sage:visited {
+color: var(--tert9);
+background-color: #251019;
+border-radius: 22px;
+border-width: 2px;
+border-style: solid;
+border-color: #d3b666;
+
+}
+a.sage:hover {
+ color: var(--tert11);
+}
+  
+/* Email "name" and repo */
+.email,
+.email:visited,
+repo,
+repo:visisted {
+color: var(--tert10);
+background-color: #251019;
+border-radius: 22px;
+border-width: 2px;
+border-style: solid;
+border-color: #d3b666;
+}
+a.email:hover,
+a.repo:hover {
+ color: var(--tert11);
+}
+
+
+/* /// QUICK REPLY \\\ */
+
+/* QR Post Contents */
+.qr-comment {
+ background: radial-gradient(farthest-corner at 100px 1px, rgba(15,0,28,1) 0%, rgba(0,11,54,1) 25%, rgba(0,11,43,1) 50%, rgba(9,0,32,1) 75%, rgba(0,13,32,1) 100%);
+ color:#e6e6f1;
+ border:unset;
+ font-size:120%
+}
+
+/* Quick reply frame, BG is line above typing area */
+.qr-frame {
+ background: radial-gradient(farthest-corner at 100px 1px, rgba(15,0,28,1) 0%, rgba(0,11,54,1) 25%, rgba(0,11,43,1) 50%, rgba(9,0,32,1) 75%, rgba(0,13,32,1) 100%);
+ box-shadow:0px 0px 25px #21af75;
+ border:2px solid #686363
+}
+
+/* Quick Reply bottom frame */
+.textarea-container {
+ background:#5e38e9
+}
+ 
+/* Posting queue in Quick Reply Box */
+.queue-item:hover:not(.current-bud) {
+ color:#5bf6b7
+}
+.modifier-on,
+.current-bud {
+ color:#fedf50;
+ text-shadow: 2px 1px 1px rgba(79, 50, 0, 1);
+ background:linear-gradient(155deg, rgba(208,132,239,1) 50%, rgba(32,39,163,1) 100%) !important;
+}
+.queue-item:last-child {
+ border-right:2px outset #b946d9
+}
+.queue-item {
+ border-left:1px solid #06078a;
+ border-bottom:1px solid #06078a;
+ text-shadow: 2px 1px 1px rgba(79, 50, 0, 1);
+ border-radius:40%;
+ background:linear-gradient(155deg, rgba(1,154,176,1) 50%, rgba(32,39,163,1) 100%);
+}
+ 
+.post-queue {
+			
+  background: #020929;
+}
+ 
+/* Files and Submit Buttons */
+.qr-button {
+ border-left:0px inset #959090;
+ font-size:110%;
+ color:#e6e6f1;
+ text-shadow: 2px 2px 1px rgba(0, 0, 0, 1);
+ background: radial-gradient(circle, rgba(114,56,233,1) 0%, rgba(6,7,138,1) 100%);
+}
+
+.qr-button:hover,
+.qr-button:focus-visible {
+ box-shadow:-.5px .5px .5px #151515;
+ background:linear-gradient(#00ff1e,#04c0cb,#019ab0) !important;
+}
+
+/* Spoiler Button */ 
+.qr-filebar {
+ background:#06078a;
+ color:#f5f285;
+ text-shadow: 2px 2px 2px rgba(0, 0, 0, 1); 
+}
+
+/* Shortcut Buttons */
+.helper-item {
+border: 20px dashed #2cb436;
+color: #c74eff;
+background-color: #ffff00;
+}
+
+/* Shortcut Button Area */
+.helper-item-container {
+	
+}	
+
+
+/* \\\QUICK REPLY END/// */
+
+
+/* REPLY CHAIN THING */
+
+/*  Reply chain thing if toggled on*/
+.chain-container {
+ background-image: url(/test/src/1657131444151.png);
+ border:1px solid #06078a
+}
+.chain-number {
+ background:#21af75;
+ color:#e6e6f1;
+ border:1px solid #9f4cb7
+}
+.selected.chain-number {
+ background:#019ab0;
+ color:#e6e6f1
+}
+.post-chains>li {
+ border:1px ridge #019ab0;
+ border-radius:10px;
+ border-bottom-right-radius:5px;
+ border-top-right-radius:5px
+}
+/* REPLY CHAIN END */
+ 
+/* Context menu from right clicking arrow by post number */
+.context-menu {
+ border-top:8px solid #26d3f3
+}
+.context-tab {
+ background:#073947;
+ border:1px solid #26d3f3
+}
+.context-tab:hover {
+ background:#21af75
+}
+.blank-context,
+.blank-context:hover {
+ background-color:#073947;
+ border:1px solid #477580
+}
+/* Context menu END */
+
+/* Window Controls (quick reply, video player etc), background color used by options BG*/
+.object-window {
+color: #000000;
+text-shadow: 0px 0px 0px #000000;
+background-color: var(--tert3);
+#background-image: url(https://haiji.kissu.moe/test/src/1723851318917.jpg);
+border:3px solid;
+border-color: var(--tert7);
+}
+
+/* Title Bar for Options and Video Player, can be used for color unique from Quick Reply */
+.handle {
+background-color: var(--tert3);
+#background-image: url(https://haiji.kissu.moe/test/src/1723851318917.jpg);
+#background-position:center;
+color:#d9d9d9;
+#border-bottom:3px ridge #fedf50
+}
+
+/* frame around video and others? */
+.page-frame {
+ background:#b07ca7;
+ border:2px solid #e8d3d3;
+ border-radius:6px;
+ border-top:1px solid #f9e1e1
+}
+
+/* Left click menu next to post number */
+.user-action-container {
+ background:#073947
+}
+.user-action-container>button {
+ color:#fff;
+ text-shadow: 1px 1px 2px rgba(0, 0, 0, 1);
+ background: rgb(16,144,92);
+ background: linear-gradient(to bottom, #4a9b66 0%,#359183 50%,#007a5d 51%,#2886a0 100%); 
+ font-size:15px;
+ border:1px solid #073947
+}
+
+/* Slow Reply at bottom of page */
+
+/* Background in Text Boxes (Name, Options, File...) including report window */
+input {
+ background: radial-gradient(farthest-corner at 30px 1px, rgba(15,0,28,1) 0%, rgba(0,11,54,1) 25%, rgba(0,11,43,1) 50%, rgba(9,0,32,1) 75%, rgba(0,13,32,1) 100%);
+ color:#e6e6f1;
+ border:1px inset #959090
+}
+
+/* Left title boxes (Name, Options, File URL) */
+.secondary-bud label {
+ background: linear-gradient(343deg, rgba(0,10,62,1) 0%, rgba(47,0,9,1) 100%);
+ color:#e6e6f1;
+ border:1px solid #5e38e9;
+}
+
+/* Text Input Area */
+.secondary-bud-body {
+color: #ffffff;
+background: #000000;
+}	
+
+/* New Reply Button */
+.secondary-bud-final {
+ border:1px solid #5e38e9
+}
+
+
+/* Report Window */
+.page-frame.report-frame {
+  background-color: #071347;
+ color:#f5f285
+}
+
+/* When reporting illegal content */
+.report-body input:disabled {
+ background-color:#073947
+}
+
+/* News Window */
+.news-header {
+ color:#ffa200;
+ text-shadow:0 0 15px #b383cf;
+ text-align:center
+}
+  
+/* /// HOME PAGE \\\ */
+
+/* Post stats on home page (posts, unique IPs, storage) */
+.stats-table {
+ text-shadow: 1px 1px 0px rgba(30, 23, 0, 1);
+ color:#ffe467
+}
+
+/* Search box on left bar */
+.global-search-label {
+color: var(--fgb); 
+background-color: var(--bg7)
+}
+
+/*  Title Bars, (Active Threads, Featured Threads, Friends)   */
+.featured-section,
+.friend-section {
+background: rgb(0,90,103);
+background: linear-gradient(180deg, rgba(0,90,103,1) 15%, rgba(1,134,154,1) 50%, rgba(0,90,103,1) 85%);
+ text-align:center;
+ color:#f2f2ff;
+ text-shadow: 2px 2px 2px rgba(0, 56, 64, 1);
+ padding:5px 16px;
+ 
+ margin-left:-12px
+}
+
+/* Home page board title above each thread OP */
+.popular-thread-board {
+ color:#d084ef;
+ text-shadow: 1px 1px 4px rgba(185, 70, 217, 1);
+}
+
+/* Board group categories at bottom of home page */
+.category {
+text-decoration:unset; /* removes the underline */
+color:#d1f4fa;
+}
+
+/* Friends subtitles on home page */
+.friend-description
+color: #ffffff;
+}
+
+/* Backgrounds for Home Stuff */
+.colored-writeup,
+.friend-item,
+.error-img-container,
+.category-container {
+ border:3px offset #3d284f;
+ background-color:#071347
+}
+
+/*********** Home page stuff END? ***********/
